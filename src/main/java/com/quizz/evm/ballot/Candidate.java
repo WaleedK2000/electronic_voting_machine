@@ -29,6 +29,17 @@ public class Candidate {
         vote_count = 0;
     }
 
+    public Candidate(String name, String party, String cnic, int vote_count) {
+        this.name = name;
+        this.candidate_src = "img/person-icon.png";
+        this.party = party;
+        this.cnic = cnic;
+        this.party_src = "img/logo.png";
+        this.vote_count = vote_count;
+    }
+
+
+
     public String getName() {
         return name;
     }

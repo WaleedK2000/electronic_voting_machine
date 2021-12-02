@@ -32,6 +32,9 @@ public class new_elections {
             try {
                 int e_id = Database_Menu.newElection(name.getText());
                 globalVars.setElectionId(e_id);
+
+                System.out.println(e_id + " elec id");
+
                 root = FXMLLoader.load(getClass().getResource("add_candidate.fxml"));
                 stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                 scene = new Scene(root);

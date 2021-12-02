@@ -40,7 +40,7 @@
                <children>
                   <Button mnemonicParsing="false" stylesheets="@../css/main.css" text="View Previous Results" />
                   <Button mnemonicParsing="false" onMouseClicked="#newElection" stylesheets="@../css/main.css" text="New Elections" />
-                  <Button mnemonicParsing="false" stylesheets="@../css/main.css" text="Add Party" />
+                  <Button mnemonicParsing="false" onMouseClicked="#newParty" stylesheets="@../css/main.css" text="Add Party" />
                </children>
             </HBox>
          </children>

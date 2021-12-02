@@ -106,6 +106,7 @@
                <children>
                   <Button layoutX="485.0" layoutY="55.0" mnemonicParsing="false" onMousePressed="#insert" stylesheets="@../css/main.css" text="Insert" />
                   <Label fx:id="notFound" layoutX="96.0" layoutY="47.0" styleClass="f1_text" stylesheets="@../css/main.css" />
+                  <Label fx:id="errorLabel" layoutX="31.0" layoutY="21.0" />
                </children>
             </AnchorPane>
          </children>

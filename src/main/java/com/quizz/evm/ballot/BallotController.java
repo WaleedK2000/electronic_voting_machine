@@ -1,13 +1,17 @@
 package com.quizz.evm.ballot;
 
 
+import com.quizz.evm.HelloApplication;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -15,6 +19,8 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class BallotController implements Initializable {
+
+    boolean vote_complete = false;
 
     @FXML
     private GridPane blallot_grid;
@@ -50,7 +56,7 @@ public class BallotController implements Initializable {
         for (Candidate candidate : candidates) {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("cast.fxml"));
-            fxmlLoader.setLocation(getClass().getResource("cast.fxml"));
+            //fxmlLoader.setLocation(getClass().getResource("cast.fxml"));
 
             try {
                 VBox box = fxmlLoader.load();
@@ -87,6 +93,8 @@ public class BallotController implements Initializable {
 
         System.out.println("Current number of votes: " + candidate.getVoteCount());
 
+        Stage stage = (Stage) blallot_grid.getScene().getWindow();
+stage.close();
     }
 
     private void can() throws SQLException {
@@ -98,5 +106,27 @@ public class BallotController implements Initializable {
         System.out.println("Yes");
     }
 
+
+    public static void display(){
+        Stage window = new Stage();
+        window.initModality(Modality.APPLICATION_MODAL);
+        window.setTitle("Vote");
+
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ballot/ballot.fxml"));
+        Scene scene = null;
+
+        try {
+            scene = new Scene(fxmlLoader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Error Loading");
+        }
+
+        window.setScene(scene);
+        window.setResizable(false);
+        window.show();
+
+
+    }
 
 }

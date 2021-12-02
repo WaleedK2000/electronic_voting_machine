@@ -1,12 +1,17 @@
 package com.quizz.evm.ballot;
 
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -15,7 +20,11 @@ import java.util.ResourceBundle;
 
 public class Admin_Candidate implements Initializable {
 
-    GlobalVars globalVars;
+    public GlobalVars globalVars;
+
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
 
     @FXML
     private GridPane blallot_grid;
@@ -26,14 +35,14 @@ public class Admin_Candidate implements Initializable {
     @FXML
     private int election_id;
 
-    Admin_Candidate(){
+    public Admin_Candidate() {
         globalVars = new GlobalVars();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        election_id = 1;
+        election_id = globalVars.getElection_id();
 
         try {
             can();
@@ -83,11 +92,35 @@ public class Admin_Candidate implements Initializable {
 
     private void can() throws SQLException {
         System.out.println("-------");
-        candidates =  Database_Ballot.fetchCandidates(1);
+        candidates = Database_Ballot.fetchCandidates(globalVars.getElection_id());
     }
 
+    @FXML
+    public void insertCandidate(ActionEvent event){
+        try {
+            root = FXMLLoader.load(getClass().getResource("add_candidate.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Switch failed CODE 111");
+        }
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 
-
-
+    @FXML
+    public void startVote(ActionEvent event){
+        try {
+            root = FXMLLoader.load(getClass().getResource("admin_vote.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Switch failed CODE 121");
+        }
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.showAndWait();
+    }
 
 }

@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -27,6 +28,9 @@ public class AddCandidateController implements Initializable {
     private Parent root;
     private GlobalVars globalVars;
 
+
+    @FXML
+    private Label errorLabel;
 
     @FXML
     private Label notFound;
@@ -55,7 +59,6 @@ public class AddCandidateController implements Initializable {
 
             ObservableList<String> os = FXCollections.observableArrayList(Database_Menu.getPartyList());
             party.setItems(os);
-
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -94,18 +97,24 @@ public class AddCandidateController implements Initializable {
 
     }
 
-    public void insert(MouseEvent event) {
+    public void insert(MouseEvent event)  {
         int election_num = globalVars.getElection_id();
 
         try {
 
             Database_Menu.insertCandidate(election_num, first.getText(), last.getText(), cnic.getText(), party.getSelectionModel().getSelectedItem());
-            root = FXMLLoader.load(getClass().getResource("add_candidate.fxml"));
+            root = FXMLLoader.load(getClass().getResource("admin_candidate.fxml"));
+
         } catch (SQLException e) {
             System.out.println("Error SQL");
+            errorLabel.setText("Error: Candidate Already Entered");
+            System.out.println(e);
+        } catch (IOException e){
+            System.out.println("Cannot load admin candidate");
             System.out.println(e);
         } catch (Exception e) {
             System.out.println(e);
+            System.out.println("Unknown Exception");
         }
 
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
