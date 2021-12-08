@@ -45,7 +45,7 @@ public class AdminVoteController {
     public AdminVoteController(){
         globalVars = new GlobalVars();
 
-        globalVars.setElectionId(1);
+        globalVars.getElection_id();
     }
 
     @FXML
