@@ -22,6 +22,7 @@ public class HelloApplication extends Application {
     public void start(Stage stage)  {
 
         int check = recovery();
+        System.out.println(check);
         FXMLLoader fxmlLoader;
 
         if(check == -1){

@@ -28,10 +28,14 @@ public class BallotController implements Initializable {
     private VoteListener voteListener;
     private int election_id;
 
+    private GlobalVars globalVars;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        election_id = 1;
+       // election_id = globalVars.getElection_id();
+        globalVars = new GlobalVars();
+        election_id = 8;
 
         try {
             can();
@@ -94,12 +98,12 @@ public class BallotController implements Initializable {
         System.out.println("Current number of votes: " + candidate.getVoteCount());
 
         Stage stage = (Stage) blallot_grid.getScene().getWindow();
-stage.close();
+        stage.close();
     }
 
     private void can() throws SQLException {
         System.out.println("-------");
-        candidates =  Database_Ballot.fetchCandidates(1);
+        candidates =  Database_Ballot.fetchCandidates(globalVars.getElection_id());
     }
 
     protected void setOut(){
