@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMousePressed="#click" prefHeight="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.quizz.evm.ballot.CastController">
+   <children>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <ImageView fx:id="candidate_pic" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/person-icon.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="candidate_party_pic" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="candidate_box" stylesheets="@../css/main.css">
+         <children>
+            <Label fx:id="candidate_name" layoutX="14.0" layoutY="10.0" prefHeight="69.0" prefWidth="274.0" styleClass="candidate_details" stylesheets="@../css/main.css" textAlignment="CENTER" wrapText="true" />
+            <Label fx:id="candidate_party" layoutX="14.0" layoutY="93.0" prefHeight="30.0" prefWidth="274.0" styleClass="candidate_details" stylesheets="@../css/main.css" wrapText="true" />
+         </children>
+      </AnchorPane>
+   </children>
+   <cursor>
+      <Cursor fx:constant="HAND" />
+   </cursor>
+</VBox>

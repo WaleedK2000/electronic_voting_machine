@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.quizz.evm.ballot.AdminVoteController">
+    <top>
+        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="top" stylesheets="@../css/main.css" BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets />
+            </BorderPane.margin>
+            <padding>
+                <Insets left="30.0" right="30.0" />
+            </padding>
+            <children>
+                <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@img/logo.png" />
+                    </image>
+                </ImageView>
+                <Label styleClass="logo" stylesheets="@../css/main.css" text="Election Commission of Pakistan" textFill="#009a17">
+                    <HBox.margin>
+                        <Insets left="40.0" />
+                    </HBox.margin>
+                </Label>
+            </children>
+        </HBox>
+    </top>
+    <center>
+        <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+            <children>
+                <HBox alignment="CENTER" prefHeight="65.0" prefWidth="600.0">
+                    <children>
+                        <Label styleClass="f1_text" stylesheets="@../css/main.css" text="Enter Voter Details" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="600.0">
+                    <children>
+                        <Label prefWidth="200.0" styleClass="f1_text" stylesheets="@../css/main.css" text="CNIC      " />
+                        <TextField fx:id="cnic" prefHeight="25.0" prefWidth="210.0" />
+                    </children>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <padding>
+                        <Insets left="25.0" />
+                    </padding>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="600.0">
+                    <children>
+                        <Label fx:id="firstNameLabel" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="200.0" styleClass="f1_text" stylesheets="@../css/main.css" text="First Name" />
+                        <TextField fx:id="first" prefHeight="25.0" prefWidth="210.0" />
+                    </children>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                    <padding>
+                        <Insets left="25.0" />
+                    </padding>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="600.0">
+                    <children>
+                        <Label fx:id="lastNameLabel" prefWidth="200.0" styleClass="f1_text" stylesheets="@../css/main.css" text="Last Name" />
+                        <TextField fx:id="last" prefHeight="25.0" prefWidth="210.0" />
+                    </children>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                    <padding>
+                        <Insets left="25.0" />
+                    </padding>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="600.0">
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <padding>
+                        <Insets left="25.0" />
+                    </padding>
+               <children>
+                  <Label fx:id="alreadyVoted" styleClass="f1_text" stylesheets="@../css/main.css" text="CNIC Already Voted In Election" visible="false" />
+               </children>
+                </HBox>
+                <AnchorPane prefHeight="134.0" prefWidth="600.0">
+                    <children>
+                        <Button fx:id="votingScreen" layoutX="443.0" layoutY="55.0" mnemonicParsing="false" onAction="#showBallot" stylesheets="@../css/main.css" text="Open Voting Screen" />
+                        <Label fx:id="notFound" layoutX="96.0" layoutY="47.0" styleClass="f1_text" stylesheets="@../css/main.css" />
+                  <Button fx:id="continueButton" layoutX="35.0" layoutY="55.0" mnemonicParsing="false" onAction="#enableVote" stylesheets="@../css/main.css" text="Continue Voting" />
+                  <Button layoutX="263.0" layoutY="55.0" mnemonicParsing="false" onAction="#endVoting" stylesheets="@../css/main.css" text="End Voting" />
+                    </children>
+                </AnchorPane>
+            </children>
+        </VBox>
+    </center>
+</BorderPane>
